@@ -31,15 +31,17 @@ ref.checksum
 // Alle Felder in dem Hauptkonstruktor stellen auch gleichzeitig Klassenattribute dar.
 // Daher sind vor jedem Parameter auch die üblichen Zugriffsmodifizierer (protected und private) möglich
 // `public` ist immer standard und kann nicht explizit angegeben werden.
-class ConstructorClass(private val x: Int, var y: Int, val z: Int = 20) {
-//                      |                      |           |
-//                      |                      |           |
-//                      |                      |           |
-//                      |                      |           public immutable mit default
-//                      |                      |
-//                      |                      public mutable variable
-//                      |
-//                      private immutable value
+class ConstructorClass[T](private val x: Int, var y: Int, val z: Int = 20) {
+//                     |   |                      |           |
+//                     |   |                      |           |
+//                     |   |                      |           |
+//                     |   |                      |           public immutable mit default
+//                     |   |                      |
+//                     |   |                      public mutable variable
+//                     |   |
+//                     |   private immutable value
+//                     |
+//                     generic type parameter
 
   // Der gesamte Body der Klasse dient nun als Initialisierungsroutine der Klasse
   // Das heißt jeder Ausdruck zwischen den geschweiften Klammern wird zur Initialisierung
