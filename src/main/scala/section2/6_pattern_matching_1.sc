@@ -39,6 +39,7 @@ describe("Foo")           // Wirft eine `MatchError` Exception.
 // Wildcardzeichen `_` was auf alle Werte passt und uns so einen Defaultwert ermöglicht.
 def describe2(x: Any) = x match {
   case 10 => "ten"
+  case true => "true"
   case true | false => "boolean"
   case "hello" => "hi!"
   case Nil => "empty List"
@@ -47,6 +48,7 @@ def describe2(x: Any) = x match {
 
 describe2(10)     // ten
 describe2(true)   // boolean
+describe2(Nil)    // empty list
 describe2(Unit)   // Something else
 
 
@@ -60,6 +62,13 @@ describe2(Unit)   // Something else
   case someVar => println(someVar)
 }
 
+def testTillZero(x: Int): Int = {
+  x match {
+    case 0 => 0
+    case someVar => testTillZero(someVar - 1)
+  }
+  
+}
 
 
 /** Constructor pattern mit case classes */

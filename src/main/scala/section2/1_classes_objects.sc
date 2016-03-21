@@ -124,6 +124,8 @@ class Car() {
     *
     * @return
     */
+  //private[section1] def isOnTestBench: Boolean = {
+  //private[myPackage] def isOnTestBench: Boolean = {
   private[this] def isOnTestBench: Boolean = {
     println("Shutting down turbo boost. Switching to lame duck mode.")
     true

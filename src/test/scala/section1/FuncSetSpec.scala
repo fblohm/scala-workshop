@@ -25,6 +25,7 @@ class FuncSetSpec extends FunSuite {
 
   test("union of 'a' and 'b' contains both elements") {
     val s: Set = union(a, b)
+    println(s)
     assert( contains(s, 10) === true)
     assert( contains(s, 15) === true)
   }

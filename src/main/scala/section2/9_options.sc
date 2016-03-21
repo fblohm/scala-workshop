@@ -61,6 +61,17 @@ val value: Option[String] = for {
 }
 
 
+val opt_hello2 = Some("Hello")
+val opt_world2 = Some("World")
+
+val value: Option[String] = for {
+  hello: String <- opt_hello2
+  world: String <- opt_world2
+} yield {
+  hello + " " + world
+}
+
+
 // `value` lässt sich jetzt zum Beispiel mit `foreach` ausgeben.
 // Das sieht vielleicht was seltsam aus, da wir nur einen oder keinen
 // Wert haben, aber so ist nunmal die Collection-API

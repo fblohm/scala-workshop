@@ -89,6 +89,7 @@ def isIntCollection(x: Any) = x match {
 // Das Problem des type erasures tritt auch in Java auf. Siehe:
 //    http://docs.oracle.com/javase/tutorial/java/generics/bridgeMethods.html
 isIntCollection(Map("x" -> "y"))
+// true // auch in java
 
 // Aaaaaaber. Was passiert, wenn wir ein `Array("hallo")`, also ein Array[String]
 // übergeben? Seltsamerweise erhalten wir hier ein `false` von der Methode.
@@ -100,6 +101,7 @@ isIntCollection(Map("x" -> "y"))
 // behält. Ein Java `int[]` ist eben ein eigener Typ und äquivalent zu dem Scala Array[Int].
 // s. auch: http://code.stephenmorley.org/articles/java-generics-type-erasure/
 isIntCollection(Array("hallo"))
+// false // Array gabs vor Generics --> eigener Typ
 
 
 

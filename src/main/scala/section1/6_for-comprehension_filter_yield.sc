@@ -113,3 +113,13 @@ val wordLength: List[Int] = for {
   } yield {
     word.length
   }
+
+
+val nestedList = List(List("Hello", "World", "!"), List("", ""))
+
+val foobar : List [String] = for {
+  list <- nestedList
+  word <- list
+} yield {
+  
+}
