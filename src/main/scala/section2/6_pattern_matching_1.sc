@@ -39,15 +39,15 @@ describe("Foo")           // Wirft eine `MatchError` Exception.
 // Wildcardzeichen `_` was auf alle Werte passt und uns so einen Defaultwert ermöglicht.
 def describe2(x: Any) = x match {
   case 10 => "ten"
-  case true | false => "boolean"    // Oder Kombination
+  case true | false => "boolean"
   case "hello" => "hi!"
   case Nil => "empty List"
   case _   => "something else"  // <--- Wildcard pattern mit einem default value
 }
 
-describe2(false)  // "boolean"
-describe2(Nil)    // "empty list"
-describe2(Unit)   // "Something else"
+describe2(10)     // ten
+describe2(true)   // boolean
+describe2(Unit)   // Something else
 
 
 

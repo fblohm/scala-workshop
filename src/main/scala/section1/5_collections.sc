@@ -84,9 +84,14 @@ list.filter(i => i > 3)       // Filtert alle Elemente raus, die nicht auf den F
 list.map(i => i + 2)          // Transformiert jedes Element der Liste
 list.takeWhile(i => i > 4)    // Liefert so lange Elemente von links nach rechts, bis der Lambdaausdruck true ergibt.
 
-// foldLeft "klappt" die Liste von links nach rechts zusammen. Der erste Parameter bildet den Startwert
+// foldLeft "klappt" die Liste von links nach rechts zusammen. Der erste Parameter bildet den Startwert des Akkumulators.
 // Der zweite Parameter nimmt eine Funktion mit zwei Parametern entgegen. Der erste ist der Akkumulator, der zweite
 // der aktuelle Wert der Liste
+// Die Aufrufe des Lambdas sähen dann so aus:
+  // 0 + 1 = 1
+  // 1 + 2 = 3
+  // 3 + 3 = 6
+  // ...
 list.foldLeft(0)( (accumulator, element) => accumulator + element)
 
 // Oder, wenn man etwas fancy unterwegs ist, nimmt man den foldLeft 'Operator' `/:` mit einer kurzen Lambda. ;-)
