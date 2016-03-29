@@ -38,7 +38,7 @@ class SomeFooClass {
   }
 }
 
-object Implicits3 extends App {
+object Implicits extends App {
   // Ab jetzt benutzen wir unsere `SomeFooClass`.
   // Wir können den zweiten Parameter natürlich direkt
   // per zweiter Parameterliste übergeben, oder
