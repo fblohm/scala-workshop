@@ -38,17 +38,21 @@ class SomeFooClass {
   }
 }
 
-object Implicits extends App {
-  // Ab jetzt benutzen wir unsere `SomeFooClass`.
-  // Wir können den zweiten Parameter natürlich direkt
-  // per zweiter Parameterliste übergeben, oder
-  val foo = new SomeFooClass
-  foo.step1("Hallo welt")(4)
+object Implicits {
 
-  // Wir definieren uns direkt ein implicit val
-  // und können den Wert auch hier direkt implizit verwenden.
-  implicit val someInt = 24
-  foo.step1("Hallo!")
+  def main(args: Array[String]) {
+    // Ab jetzt benutzen wir unsere `SomeFooClass`.
+    // Wir können den zweiten Parameter natürlich direkt
+    // per zweiter Parameterliste übergeben, oder
+    val foo = new SomeFooClass
+    foo.step1("Hallo welt")(4)
+
+    // Wir definieren uns direkt ein implicit val
+    // und können den Wert auch hier direkt implizit verwenden.
+    implicit val someInt = 24
+    foo.step1("Hallo!")
+  }
+
 }
 
 
