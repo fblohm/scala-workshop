@@ -12,7 +12,7 @@ import scala.concurrent.{Await, Future}
 
 /**
  * In this example, we want to synchronize three futures
- * in a more realistic scenario and show some traps
+ * in a more realistic scenario and show some traps.
  */
 object Futures4 {
 

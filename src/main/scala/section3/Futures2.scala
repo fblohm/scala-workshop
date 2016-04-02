@@ -26,12 +26,12 @@ object Futures2 {
 
     // Either a single onSuccess handler with a partial function:
     f.onSuccess {
-      case result => println(s"The computed division onSuccess is: $result")
+      case result: Double => println(s"The computed division onSuccess is: $result")
     }
 
     // Or a single onFailure handler with a partial function on a Throwable input value.
     f.onFailure {
-      case error => println(s"An error occurred onFailure: '${error.getMessage}'")
+      case error: Throwable => println(s"An error occurred onFailure: '${error.getMessage}'")
     }
 
     // Or a central handler, which takes a Try object, which can be either a Success
