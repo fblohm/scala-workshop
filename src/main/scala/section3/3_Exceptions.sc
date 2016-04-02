@@ -1,3 +1,5 @@
+import scala.util.{Failure, Success, Try}
+
 // We can easily throw exceptions:
 //throw new IllegalArgumentException("foobar")
 
@@ -37,7 +39,20 @@ val f = try {
   throw new IllegalArgumentException("foobar")
 } catch exceptionHandler
 
-// Like the
+
+
+// A more functional style to handle exceptions, is the Try monad, which is very
+// similar to the Option type. The Try is of a type T, which may be the successful
+// result. If the code does not thrown an exception, the try is a `Success[T]`, otherwise
+// the try is a `Failure[Throwable]`:
+val aTry: Try[String] = Try {
+  throw new IllegalArgumentException("A new exception")
+}
+
+aTry match {
+  case Success(myString) => println(myString)
+  case Failure(exception) => println(exception)
+}
 
 
 
