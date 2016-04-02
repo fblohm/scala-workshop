@@ -3,6 +3,17 @@ package section3
 object PartialFunctions  {
   def main(args: Array[String]) {
 
+    // A partial function is a partially defined function.
+    // These things, we may know from the math lessons in our school.
+    // e.g: f(x) = 1/x is not defined for 0 but for all other numbers.
+
+    // So, in scala a partial function is a function, which is not defined
+    // for all input value of a type. Partial functions also can only take
+    // a single parameter but have of course a return type.
+
+    // For example this function takes a Option of String, and returns a String.
+    // But the function only takes Some values. For Nones this function is not defined.
+    // By the way, even if a partial function looks like a pattern match, it is not!
     val iHandleSomes: PartialFunction[Option[String], String] = {
       case Some(value) => value
     }
@@ -10,33 +21,27 @@ object PartialFunctions  {
     val some = Some("hallo")
     val none = None
 
+    // Therefore, partial functions have the `isDefinedAt` method, to test the value if it fits, before
+    // we call the function itself.
     println(iHandleSomes.isDefinedAt(none))
     println(iHandleSomes.isDefinedAt(some))
     println(iHandleSomes(some))
 
-
-
+    // But for what the heck do we need this function?
+    // For example to define special handler, which we then can combine.
+    // This handler, handles Nones.
     val iHandleNones: PartialFunction[Option[String], String] = {
       case None => "Fallback"
     }
 
-    // Combined partial function
+    // We can combine both, the Some and the None handler to an all mighty Option handler:
     val optionHandler = iHandleSomes orElse iHandleNones
+
     println(optionHandler.isDefinedAt(none))
     println(optionHandler.isDefinedAt(some))
     println(optionHandler(some))
 
-    val f1: String => String = (x: String) => x + "!"
-    val f2: String => String = (y: String) => "Hallo " + y
-
-    // Our composition is equals to:
-    // f2(f1(optionHandler(x)))
-    val f3 = f2 compose f1 compose optionHandler
-    println(f3(Some("Welt")))
-
-    // Even if a pattern match looks like a partial function, it is not!
     /* Does not work:  Some("Welt") match (f3) */
-
     // But we can use them as exception mapper in a catch block
     val exceptionMapper: PartialFunction[Throwable, String] = {
       case e: IllegalArgumentException => "Fallback"
