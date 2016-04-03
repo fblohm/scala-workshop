@@ -4,6 +4,7 @@
 # Build and runtime files
 *.class
 *.log
+bank.json
 
 # sbt specific
 .cache
