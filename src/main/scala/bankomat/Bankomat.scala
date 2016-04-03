@@ -12,7 +12,12 @@ object Bankomat {
       printUsage()
     } else {
       args.toList match {
-        case List("create", accountNo) => bank.createAccount(accountNo)
+        case List("create", accountNo) =>
+          if(!bank.exists(accountNo)) {
+            bank.createAccount(accountNo)
+          } else {
+            println(s"The account '$accountNo' already exists.")
+          }
         case List("deposit", accountNo, amount) =>
           checkedOperation(accountNo, amount, (acc, amount) => bank.deposit(acc, amount))
         case List("withdraw", accountNo, amount) =>

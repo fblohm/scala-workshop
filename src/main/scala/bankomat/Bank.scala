@@ -16,12 +16,12 @@ class Bank(private val safe: Safe) {
     accounts.get(accountNo).isDefined
   }
 
-  def deposit(accountNo: String, amount: Double) = {
+  def deposit(accountNo: String, amount: BigDecimal) = {
     accounts(accountNo) = accounts(accountNo).deposit(amount)
     safe.persist(accounts.toMap)
   }
 
-  def withdraw(accountNo: String, amount: Double) = {
+  def withdraw(accountNo: String, amount: BigDecimal) = {
     accounts(accountNo) = accounts(accountNo).withdraw(amount)
     safe.persist(accounts.toMap)
   }

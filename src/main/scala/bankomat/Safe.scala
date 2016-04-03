@@ -7,7 +7,7 @@ import net.liftweb.json.{Serialization, _}
 import scala.io.Source
 
 class Safe(private val file: File) {
-  implicit val formats = DefaultFormats
+  implicit val formats = DefaultFormats + new BigDecimalSerializer
 
   def persist(account: Map[String, Account]) = {
     new PrintWriter(file) {
