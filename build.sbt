@@ -37,6 +37,8 @@ resolvers ++= Seq (
   //"Twitter Maven" at "https://maven.twttr.com"
 )
 
+mainClass in assembly := Some("bankomat.Bankomat")
+
 lazy val root =
   project.in( file(".") )
 
