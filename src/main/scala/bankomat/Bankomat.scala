@@ -8,29 +8,30 @@ object Bankomat {
   val bank = new Bank(new Safe(file))
 
   def main(args: Array[String]) {
-    if(args.length <= 0) {
+
+    if (args.length <= 0) {
       printUsage()
     } else {
       args.toList match {
         case List("create", accountNo) =>
-          if(!bank.exists(accountNo)) {
+          if (!bank.exists(accountNo)) {
             bank.createAccount(accountNo)
           } else {
             println(s"The account '$accountNo' already exists.")
           }
         case List("deposit", accountNo, amount) =>
-          checkedOperation(accountNo, amount, (acc, amount) => bank.deposit(acc, amount))
+          checkedOperation(accountNo, amount, (acc, am) => bank.deposit(acc, am))
         case List("withdraw", accountNo, amount) =>
-          checkedOperation(accountNo, amount, (acc, amount) => bank.withdraw(acc, amount))
+          checkedOperation(accountNo, amount, (acc, am) => bank.withdraw(acc, am))
         case _ => printUsage()
       }
     }
   }
 
-  def checkedOperation(accountNo: String, amount: String, op: (String, Double) => Unit) = {
+  def checkedOperation(accountNo: String, amount: String, op: (String, BigDecimal) => Unit) = {
     try {
-      if(bank.exists(accountNo)) {
-        op(accountNo, amount.toDouble)
+      if (bank.exists(accountNo)) {
+        op(accountNo, BigDecimal(amount))
       } else {
         println(s"Error: The account '$accountNo' does not exist.")
       }

@@ -8,10 +8,11 @@ import scala.math.BigDecimal.RoundingMode
   * Created by Christian on 03.04.2016.
   */
 class BigDecimalSerializer extends Serializer[BigDecimal] {
+  val BigDecimalClass = classOf[BigDecimal]
+
   override def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), BigDecimal] = {
 
-    case (TypeInfo(clazz, _), JObject(fields)) => {
-      println(fields)
+    case (TypeInfo(BigDecimalClass, _), JObject(fields)) => {
       fields match {
         case JField("scale", JInt(scale)) :: JField("value", JString(v)) :: Nil => {
           BigDecimal(v).setScale(scale.toInt, RoundingMode.HALF_UP)

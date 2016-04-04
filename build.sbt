@@ -33,8 +33,8 @@ libraryDependencies += "org.mockito" % "mockito-core" % "1.9.5" % "test"
 
 resolvers ++= Seq (
   "snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
-  "releases"  at "http://oss.sonatype.org/content/repositories/releases"
-  //"Twitter Maven" at "https://maven.twttr.com"
+  "releases"  at "http://oss.sonatype.org/content/repositories/releases",
+  "Twitter Maven" at "https://maven.twttr.com"
 )
 
 mainClass in assembly := Some("bankomat.Bankomat")
