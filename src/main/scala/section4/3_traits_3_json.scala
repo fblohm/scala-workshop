@@ -49,11 +49,13 @@ object JsonTraitMixin extends App {
   // As a special feature of traits, we now can mixin the trait on the fly by the instantiation of
   // a new `Customer` to make this instance, and only this instance, "jsonable":
   val person = new Customer("Max", "Mustermann", Some(address)) with Json
+  val personB = new Customer("Max", "Mustermann", Some(address))
 
   println("\n\nAddress\n=================")
   println(address.toJson)
   println("\n\nCustomer\n=================")
   println(person.toJson)
+  //println(personB.toJson) // geht nicht
 
   // This pattern also works for all classes and is a good way to expand third party classes
   // with new functionality:
@@ -61,6 +63,8 @@ object JsonTraitMixin extends App {
   val person2 = new Customer("Hans", "Dampf", Some(address))
 
   val javaList = new util.ArrayList[Customer] with Json
+  //val javaList: util.ArrayList = new util.ArrayList[Customer] with Json // geht nicht
+  //val javaList: util.ArrayList[Customer] with Json = new util.ArrayList[Customer] with Json // das funktioniert
   javaList.add(person1)
   javaList.add(person2)
 

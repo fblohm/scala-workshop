@@ -14,6 +14,7 @@ object Futures2 {
     def divide(x: Int, y: Int): Future[Double] = Future {
       Thread.sleep(Random.nextInt(2000))
       println("Calculating result")
+      // läuft in einem anderen Thread als das x oben!!!
       x/y
     }
 

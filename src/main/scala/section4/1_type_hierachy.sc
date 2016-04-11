@@ -15,7 +15,7 @@ var b: AnyVal = ()
 b = 34
 b = true
 b = 3.456
-// y = List(1, 2,3) <-- Won't compile! List not an AnyVal!
+// b = List(1, 2,3) <-- Won't compile! List not an AnyVal!
 
 
 // AnyRef is the superclass for all user defined objects
@@ -25,6 +25,8 @@ c = List(1, 2, 3)
 c = "Hallo Welt"
 c = new Hello("hallo")
 
+c = true //
+
 
 // Scala also defines bottom types.
 // The first reason is to give the null-reference a valid Type, cause anything in scala must have a type.
@@ -32,6 +34,8 @@ c = new Hello("hallo")
 var d: Null = null
 var e: String = null // <- works cause Null inherits all AnyRefs
 var f: Hello = null // <- works also cause AnyRef <- Hello <- Null
+
+//var g: Int = null // type mismatch: found Null(null) required: Int
 
 
 // The second bottom type is the 'Nothing' type. Nothing is the subtype of ALL other types!

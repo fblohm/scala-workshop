@@ -11,6 +11,8 @@ package section4
   case class Passenger(hasTicket: Boolean)
   class Train(var passengers: List[Passenger]) {
     this: TrainGuard =>
+    
+    //def check: Int = this.findFareDodgers
   }
 
   /**
@@ -36,6 +38,12 @@ package section4
   trait LazyGuard extends TrainGuard {
     def findFareDodgers: Int = 0
   }
+
+
+  class LazyGuardTrain(passenger: List[Passenger]) extends Train(passenger) with LazyGuard {
+    
+  }
+
 
   /**
    * So we define two trains. All trains need a conductor but we can choose which implementation we mixin.

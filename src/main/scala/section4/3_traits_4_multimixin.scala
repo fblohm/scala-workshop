@@ -15,10 +15,12 @@ package section4
 
   trait BigEngine extends Engine {
     override def run() = println("RRÖÖÖÖÖÖÖÖÖÖAAAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRRRR")
+    //def show() = println("und weg...")
   }
 
   trait LittleEngine extends Engine {
     override def run() = println("töf töf töf")
+    //def show() = println("schick")
   }
 
   /** Let us define a super special hybrid car with the two engines: **/
@@ -39,7 +41,19 @@ package section4
     car.run()
     car.runLittle()
     car.runBig()
+    /*
+    * RRÖÖÖÖÖÖÖÖÖÖAAAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRRRR
+    * töf töf töf
+    * RRÖÖÖÖÖÖÖÖÖÖAAAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRRRR
+    **/
 
+    var car2: LittleEngine = car
+    var car3: BigEngine = car
+
+    //car2.show()
+    //car3.show()
+
+    //car.asInstanceOf[LittleEngine].show()
 
     // The answer is BigEngine.run. Because scala goes an easy way to solve the diamond problem:
     // It just uses the traits order form right to left and therefore: First come first serve.

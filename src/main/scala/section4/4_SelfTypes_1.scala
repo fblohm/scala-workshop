@@ -23,6 +23,10 @@ package object SelfTypes1 {
     */
   trait TrainGuard {
     this: CapitalismTrain =>
+    // z.B. binden an JavaListe ---> aber wie???
+    //this: CapitalismTrain with Ordered[Train] =>
+    //this: CapitalismTrain with SocialismTrain =>
+
     // A conductor can only control a capitalismTrain
     def findFareDodgers: Int = passengers.count(p => !p.hasTicket)
   }

@@ -15,6 +15,10 @@ trait Person {
 // Scala has NO native multi inheritance!
 class Student(val name: String, val gender: String) extends Person
 
+class Student2(val gender: String) extends Person {
+  val name: String = "Max"
+}
+
 
 // We can define another trait which we want to mix in into our subclass.
 // This trait represents a user of a cafeteria. It has a budget, can buy food and
@@ -35,9 +39,16 @@ trait CafeteriaUser {
   def deposit(value: Int) = budget = budget + value
 }
 
+trait CafeteriaUser2 {
+  private var budget: Int = 5
+
+  //def deposit(value: Int) = budget = budget + value * 2
+}
+
+
 // So we define a class `Employee` which is a `Person` and also a `CafeteriaUser`:
 // To do this, we extend the Person class and mix in the `CafertiaUser` with the keyword `with`.
-class Employee(val name: String, val gender: String) extends Person with CafeteriaUser {
+class Employee(val name: String, val gender: String) extends Person with CafeteriaUser with CafeteriaUser2 {
   val beginOfEmployment = new Date
 }
 
